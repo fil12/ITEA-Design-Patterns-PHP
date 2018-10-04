@@ -1,5 +1,5 @@
 <?php
 
 return [
-    \App\Logger\LoggerInterface::class => DI\create(\App\Logger\FileLogger::class),
+    \App\Logger\LoggerInterface::class => DI\create(\App\Logger\NullLogger::class),
 ];

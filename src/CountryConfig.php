@@ -4,29 +4,13 @@ namespace App;
 
 use Symfony\Component\Yaml\Yaml;
 
-final class CountryConfig
+class CountryConfig
 {
-    private static $instance;
-
     private $config = [];
 
-    public static function getInstance()
+    public function __construct()
     {
-        if (null === self::$instance) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
-    private function __construct()
-    {
-        $this->config = Yaml::parseFile(__DIR__ . '/../data/ua.yaml');
-    }
-
-    public function __toString()
-    {
-        return (string) \spl_object_id($this);
+        $this->config = $this->getConfig();
     }
 
     public function get($name, $default = null)
@@ -38,15 +22,8 @@ final class CountryConfig
         return $default;
     }
 
-    private function __clone()
+    public function getConfig()
     {
-    }
-
-    private function __sleep()
-    {
-    }
-
-    private function __wakeup()
-    {
+        return Yaml::parseFile(__DIR__ . '/../data/ua.yaml');
     }
 }

@@ -1,2 +1,5 @@
 domain: example.com.ua
-languages: [ua, ru]
+languages:
+    - ua
+    - ru
+currency: UAH

@@ -2,17 +2,24 @@
 <?php
 
 use App\CountryConfig;
+use App\CountryConfigProxy;
+use Symfony\Component\Yaml\Yaml;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$config = CountryConfig::getInstance();
-var_dump((string) $config);
-var_dump($config->get('domain'));
+$config = new CountryConfig();
+$proxy = new CountryConfigProxy();
 
-//$copy = clone $config;
-//var_dump((string) $copy);
+$newConfig = [
+    'domain' => 'example.com.ua',
+    'languages' => ['ua', 'ru'],
+    'currency' => 'UAH',
+];
 
-$serialized = \serialize($config);
-$deserialized = \unserialize($serialized);
-var_dump((string) $deserialized);
+\file_put_contents(
+    __DIR__ . '/../data/ua.yaml',
+    Yaml::dump($newConfig)
+);
 
+var_dump($config->getConfig());
+var_dump($proxy->getConfig());

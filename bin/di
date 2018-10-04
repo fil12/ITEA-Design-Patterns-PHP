@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+use App\Logger\LoggerInterface;
+use DI\ContainerBuilder;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$builder = new ContainerBuilder();
+$builder->addDefinitions(__DIR__ . '/../config/di.php');
+$container = $builder->build();
+
+$textAnalizer = new \App\TextAnalizer($container->get(LoggerInterface::class));
+$textAnalizer->analize('Hello!');

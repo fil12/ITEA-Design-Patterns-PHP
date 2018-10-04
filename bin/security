@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+use App\Security\AuthProtocolFactory;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$protocol = AuthProtocolFactory::factory('AUTH-V1');
+$protocol->authenticate();
+
+$protocol = AuthProtocolFactory::factory('AUTH-V2');
+$protocol->authenticate();

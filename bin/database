@@ -6,9 +6,18 @@ use App\Database\SqlQueryBuilder;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $builder = new SqlQueryBuilder();
-//$builder->select('id, firstname');
+$builder->select('id, firstname');
 $builder->from('user');
-//$builder->where('status = 3');
+$builder->where('status = 3');
 $query = $builder->getQuery();
+
+var_dump($query);
+
+$builder = new SqlQueryBuilder();
+$query = $builder->select('email')
+    ->from('user')
+    ->where('id = 4')
+    ->getQuery()
+;
 
 var_dump($query);

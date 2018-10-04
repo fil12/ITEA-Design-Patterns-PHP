@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+use App\CountryConfig;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$config = CountryConfig::getInstance();
+var_dump((string) $config);
+var_dump($config->get('domain'));
+
+//$copy = clone $config;
+//var_dump((string) $copy);
+
+$serialized = \serialize($config);
+$deserialized = \unserialize($serialized);
+var_dump((string) $deserialized);
+

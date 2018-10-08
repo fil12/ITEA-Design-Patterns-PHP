@@ -1,0 +1,36 @@
+#!/usr/bin/env php
+<?php
+
+use App\ArrayCollection;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$collection = new ArrayCollection([
+    'fruits' => [
+        'african' => [
+            'banana',
+        ],
+        'ukrainian' => [
+            'apple',
+            'melon',
+        ],
+    ],
+]);
+
+//foreach ($collection as $item) {
+//    echo $item . \PHP_EOL;
+//}
+//
+//\var_dump(\count($collection));
+//
+//$collection->sort();
+//
+//foreach ($collection as $item) {
+//    echo $item . \PHP_EOL;
+//}
+//
+//\var_dump($collection[1]);
+//$collection[1] = 'kiwi';
+//\var_dump($collection[1]);
+
+\var_dump($collection['fruits.ukrainian']);
